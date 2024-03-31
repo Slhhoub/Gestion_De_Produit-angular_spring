@@ -1,0 +1,51 @@
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-lg-7 m-auto shadow p-5 mb-5 bg-body rounded">
+      <h3>Form Produit</h3>
+      <div class="alert alert-danger" role="alert" *ngIf="messageErreur">
+        erreur
+      </div>
+      <div class="alert alert-success" role="alert" *ngIf="messageSuccsess">
+        add Produit success
+      </div>
+      <form class="row g-3 mt-2"  [formGroup]="ProduitRegister" (submit)="saveAllProduit(ProduitRegister.value)">
+        <div class="col-md-6">
+          <label for="validationDefault01" class="form-label">Type</label>
+          <input type="text" class="form-control" formControlName="type" id="validationDefault01"  required>
+          <div class="alert alert-danger mt-2" role="alert"
+          *ngIf="(ProduitRegister.get('type')?.hasError('required') ) && ProduitRegister.get('type')?.touched" >
+             Type is required
+          </div>
+        </div>
+        <div class="col-md-6">
+          <label for="validationDefault02" class="form-label">Reference</label>
+          <input type="text" class="form-control"  formControlName="reference" id="validationDefault02"  required>
+          <div class="alert alert-danger mt-2" role="alert"
+          *ngIf="(ProduitRegister.get('reference')?.hasError('required') ) && ProduitRegister.get('reference')?.touched" >
+          reference is required
+          </div>
+        </div>
+        <div class="col-md-6">
+          <label for="validationDefault03" class="form-label">Description</label>
+          <input type="text" class="form-control"  formControlName="description" id="validationDefault03"  required>
+          <div class="alert alert-danger mt-2" role="alert"
+          *ngIf="(ProduitRegister.get('description')?.hasError('required') ) && ProduitRegister.get('description')?.touched" >
+          description is required
+          </div>
+        </div>
+        <div class="col-md-6">
+          <label for="validationDefault04" class="form-label">Prix</label>
+          <input type="text" class="form-control"  formControlName="prix" id="validationDefault03"  required>
+          <div class="alert alert-danger mt-2" role="alert"
+          *ngIf="(ProduitRegister.get('prix')?.hasError('required') ) && ProduitRegister.get('prix')?.touched" >
+             prix is required
+          </div>
+        </div>
+        <div class="col-12">
+          <button class="btn btn-primary" [disabled]="!ProduitRegister.valid" type="submit">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

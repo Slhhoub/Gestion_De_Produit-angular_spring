@@ -1,0 +1,33 @@
+
+
+<div class="container mt-5">
+  <h3>LIST CLIENT</h3>
+  <div class="alert alert-danger" role="alert" *ngIf="messageSuccess">
+    delete client success
+  </div>
+  <table class="table table-success table-striped table-bordered text-center">
+    <thead>
+      <tr>
+        <th scope="col">Nom</th>
+        <th scope="col">Prenom</th>
+        <th scope="col">Adresse</th>
+        <th scope="col">Num tel </th>
+        <th scope="col">Ville</th>
+        <th scope="col">action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of data">
+        <td>{{ item.nom }}</td>
+        <td>{{ item.prenom }}</td>
+        <td>{{ item.adresse }}</td>
+        <td>{{ item.num_tel }}</td>
+        <td>{{ item.ville }}</td>
+        <td>
+          <button type="button" class="btn btn-danger me-2" (click)="removeClient(item.id)">remove</button>
+          <a type="button" class="btn btn-info" [routerLink]="['/admin/client/edit', item.id]">update</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
